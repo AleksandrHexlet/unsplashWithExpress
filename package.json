@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nodemon app.js ",
     "dev": "nodemon app.js",
+    "deploy": "cross-env NODE_ENV=production gh-pages -d public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
