@@ -15,6 +15,8 @@ app.use((req, res) => {
 
 
 app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`Hello World.Port in ${PORT}`);
-  console.log (`Hello my friend. Don't worry, be happy.Port in ${PORT}`);
+  // eslint-disable-next-line no-console
+  console.log(`Hello my friend. Don't worry, be happy.Port in ${PORT}`);
 });

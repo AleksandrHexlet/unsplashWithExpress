@@ -3,6 +3,7 @@ const { users } = require('../data/users');
 
 
 router.get('/users/:id', (req, res) => {
+  // eslint-disable-next-line no-underscore-dangle
   const user = users.find((item) => item._id === req.params.id);
   if (user) {
     res.send(user);
