@@ -1,15 +1,14 @@
 const router = require('express').Router();
 const path = require('path');
 const fs = require('fs');
-const { users } = require('../data/users');
+const users = require('../data/users.json');
 
-const wayUsers = path.join(__dirname, '../data/users.js');
-
+const wayUsers = path.join(__dirname, '../data/users.json');
 
 router.get('/users/:id', (req, res) => {
-  // eslint-disable-next-line no-underscore-dangle
-  const user = users.find((item) => item._id === req.params.id);
   fs.readFile(wayUsers, { encoding: 'utf8' }, () => {
+    // eslint-disable-next-line no-underscore-dangle
+    const user = users.find((item) => item._id === req.params.id);
     if (user) {
       res.status(200).send(user);
     } else {
@@ -19,14 +18,12 @@ router.get('/users/:id', (req, res) => {
 });
 
 router.get('/users', (req, res) => {
-  // eslint-disable-next-line no-unused-vars
   fs.readFile(wayUsers, { encoding: 'utf8' }, (err, data) => {
     if (err) {
-      // eslint-disable-next-line no-console
-      console.log('Cards is not found');
+      res.status(500).send('Users is not found');
       return;
     }
-    res.status(200).send(users);
+    res.status(200).send(JSON.parse(data));
   });
 });
 
